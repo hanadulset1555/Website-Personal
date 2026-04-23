@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | My Project</title>
+    <!-- Font Konsisten -->
+    <link href="https://googleapis.com" rel="preconnect">
+    <style>
+        @font-face {
+            font-family: 'SelfDeception'; 
+            src: url('SelfDeceptionRegular-ALLWA.ttf'); 
+        }
+
+        :root {
+            --bg-paper: #fce4ec;
+            --accent: #f06292;
+            --dark: #2d3436;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            background-image: 
+                linear-gradient(white 3px, transparent 3px), 
+                linear-gradient(90deg, white 3px, transparent 3px);
+            background-size: 50px 50px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+            color: var(--dark);
+        }
+
+        /* --- HEADER PERSIS INDEX (JANGAN DIGANTI) --- */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            background-image: url('header.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--dark);
+        }
+
+        header h1 {
+            font-family: 'SelfDeception', cursive;
+            font-size: 8rem;
+            margin: 0;
+            line-height: 0.5;
+            text-transform: none;
+            color: #c77752; 
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0px 0px 10px rgba(255,255,255,0.8);
+        }
+
+        header h1 span {
+            font-size: 5rem;
+            color: #ffbaba !important;
+            display: block;
+            margin-top: 10px;
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0px 0px 10px rgba(255,255,255,0.8);
+        }
+
+        header p {
+            font-family: 'Special Elite', cursive;
+            color: #472310;
+            font-weight: bold;
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0px 0px 10px rgba(255,255,255,0.8);
+        }
+
+        /* --- NAVIGASI --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            background: var(--white);
+            color: var(--dark);
+            padding: 8px 20px;
+            border: 2px solid var(--dark);
+            font-weight: bold;
+            box-shadow: 5px 5px 0px var(--dark);
+            transform: rotate(calc(var(--r, 0) * 1deg));
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            transform: scale(1.1) rotate(0deg);
+            background: var(--accent);
+            color: white;
+        }
+
+        /* --- CONTAINER PROJECT --- */
+        .container {
+            max-width: 1200px; /* Diperlebar sedikit agar muat 4 kesamping */
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            font-family: 'Syne', sans-serif;
+            background: #DEB887;
+            color: #4A3728;
+            display: inline-block;
+            padding: 5px 20px;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            font-family: 'Special Elite', cursive;
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        /* --- GRID PROJECT: PAKSA SATU BARIS --- */
+        .project-grid {
+            display: grid;
+            /* Kita kunci menjadi 4 kolom yang lebarnya sama */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px;
+            padding: 20px;
+            align-items: start;
+        }
+
+        .project-card {
+            background: white;
+            padding: 10px 10px 30px 10px; 
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            transition: 0.3s;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        /* Rotasi miring-miring tetap dipertahankan */
+        .project-card:nth-child(1) { transform: rotate(-2deg); }
+        .project-card:nth-child(2) { transform: rotate(1deg); }
+        .project-card:nth-child(3) { transform: rotate(-1.5deg); }
+        .project-card:nth-child(4) { transform: rotate(2deg); }
+
+        .project-card:hover {
+            transform: scale(1.08) rotate(0deg);
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Efek Paku Payung */
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 15px;
+            background: #ff5252;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 140px; /* Ukuran gambar dikecilkan agar pas dalam baris */
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+
+        .project-card h3 {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.9rem; /* Ukuran teks disesuaikan */
+            margin: 10px 0 0 0;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-family: 'Special Elite';
+            opacity: 0.7;
+        }
+
+        /* Supaya tetap aman di HP */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr); /* Di HP jadi 2 baris x 2 kolom biar gak kekecilan */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Portfolio<br><span>Qeenasyura Hana</span></h1>
+    <p class="typewriter-text">Karya Nyata dari Proses Belajar</p>
+</header>
+
+<nav>
+    <a href="index.html" style="--r: -2">BERANDA</a>
+    <a href="profil.html" style="--r: 3">PROFIL</a>
+    <a href="video.html" style="--r: -1">VIDEO</a>
+    <a href="project.html" style="--r: 2">MY PROJECT</a>
+</nav>
+
+<div class="container">
+    <h2>My Project</h2>
+    <p class="intro-text">
+        <i>Halaman ini menampilkan kumpulan proyek yang pernah saya buat.</i>
+    </p>
+
+    <div class="project-grid">
+<a href="video.html" class="project-card">
+    <!-- Ganti img dengan iframe youtube -->
+    <iframe width="300" height="200" 
+        src="https://www.youtube.com/embed/3lcfzY2PwCs?si=DIWYE2UDHAtg1JC8" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+    <h3>Video Argumentasi</h3>
+</a>
+
+        <a href="#" class="project-card">
+        <img src="website.png" alt="Project 2" width="300" height="260">
+        <h3>Website Portofolio</h3>
+    </a>
+
+       <a href="https://mit.edu" target="_blank" class="project-card">
+    <iframe src="https://scratch.mit.edu/projects/1085542673/embed" 
+            allowtransparency="true" 
+            width="300" 
+            height="260" 
+            frameborder="0" 
+            scrolling="no" 
+            allowfullscreen>
+    </iframe>
+    <h3>Game Edukasi</h3>
+</a>
+
+
+       <a href="https://mit.edu" target="_blank" class="project-card">
+    <iframe src="https://scratch.mit.edu/projects/1055524895/embed" 
+            allowtransparency="true" 
+            width="300" 
+            height="260" 
+            frameborder="0" 
+            scrolling="no" 
+            allowfullscreen>
+            <h3>Proyek Lainnya</h3>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p>Ujian Praktik Terintegrasi | SMPIT Al Haraki | Qeenasyura Hana @2026</p>
+</footer>
+
+</body>
+</html>

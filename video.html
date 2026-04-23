@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Video</title>
+    <!-- Font Tetap Konsisten -->
+    <link href="https://googleapis.com" rel="preconnect">
+    <style>
+        @font-face {
+            font-family: 'SelfDeception'; 
+            src: url('SelfDeceptionRegular-ALLWA.ttf'); 
+        }
+
+        :root {
+            --bg-paper: #fce4ec;
+            --accent: #f06292;
+            --dark: #2d3436;
+            --white: #ffffff;
+            --tape-color: rgba(240, 98, 146, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            background-image: 
+                linear-gradient(white 3px, transparent 3px), 
+                linear-gradient(90deg, white 3px, transparent 3px);
+            background-size: 50px 50px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+            color: var(--dark);
+        }
+
+        /* --- HEADER (TIDAK BERUBAH) --- */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            background-image: url('header.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--dark);
+        }
+
+        header h1 {
+            font-family: 'SelfDeception', cursive;
+            font-size: 8rem;
+            margin: 0;
+            line-height: 0.5;
+            text-transform: none;
+            color: #c77752; 
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0px 0px 10px rgba(255,255,255,0.8);
+        }
+
+        header h1 span {
+            font-size: 5rem;
+            color: #ffbaba !important;
+            display: block;
+            margin-top: 10px;
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0px 0px 10px rgba(255,255,255,0.8);
+        }
+
+        header p {
+            font-family: 'Special Elite', cursive;
+            color: #472310;
+            font-weight: bold;
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0px 0px 10px rgba(255,255,255,0.8);
+        }
+
+        /* --- NAVIGASI --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            background: var(--white);
+            color: var(--dark);
+            padding: 8px 20px;
+            border: 2px solid var(--dark);
+            font-weight: bold;
+            box-shadow: 5px 5px 0px var(--dark);
+            transform: rotate(calc(var(--r, 0) * 1deg));
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            transform: scale(1.1) rotate(0deg);
+            background: var(--accent);
+            color: white;
+        }
+
+        /* --- KONTEN VIDEO & TEXT --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .video-container {
+            background: white;
+            border: 2px solid var(--dark);
+            padding: 20px;
+            position: relative;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+
+        /* Washi Tape Decor */
+        .tape {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            background: var(--tape-color);
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            border: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .responsive-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border: 3px solid var(--dark);
+        }
+
+        .responsive-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Bagian Catatan/Text dari Gambar */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .memo-card {
+            background: #fff;
+            border: 2px solid var(--dark);
+            padding: 20px;
+            position: relative;
+            box-shadow: 5px 5px 0px var(--dark);
+        }
+
+        .memo-card h2 {
+            font-family: 'Syne', sans-serif;
+            background: #DEB887;
+            color: #4A3728;
+            font-size: 1.2rem;
+            margin-top: 0;
+            padding: 0 10px;
+            display: inline-block;
+        }
+
+        .typewriter-text {
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Warna-warni memo agar tidak monoton */
+        .memo-1 { transform: rotate(-1deg); background: #fff9fa; }
+        .memo-2 { transform: rotate(2deg); background: #f0f7ff; }
+        .memo-3 { transform: rotate(-2deg); background: #ffffed; }
+        .memo-4 { transform: rotate(1deg); background: #f5fff5; }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-family: 'Special Elite';
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .info-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 4rem; }
+            header h1 span { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Portfolio<br><span>Qeenasyura Hana</span></h1>
+    <p class="typewriter-text">Karya Nyata dari Proses Belajar</p>
+</header>
+
+<nav>
+    <a href="index.html" style="--r: -2">BERANDA</a>
+    <a href="profil.html" style="--r: 3">PROFIL</a>
+    <a href="video.html" style="--r: -1">VIDEO</a>
+    <a href="project.html" style="--r: 2">MY PROJECT</a>
+</nav>
+
+<div class="container">
+    <!-- BAGIAN VIDEO -->
+    <div class="video-container">
+        <div class="tape"></div>
+        <div class="responsive-video">
+            <!-- Masukkan ID Video YouTube kamu di sini -->
+           <iframe 
+    src="https://www.youtube-nocookie.com/embed/3lcfzY2PwCs?si=QCuc4uwPe5Qm-CdP" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+</iframe>
+        </div>
+    </div>
+
+    <!-- BAGIAN TEKS (Sesuai Gambar) -->
+    <div class="info-grid">
+        <div class="memo-card memo-1">
+            <h2>Video Argumentasi</h2>
+            <p class="typewriter-text">Menekankan pada pengembangan etos kerja, tanggung jawab, serta kesempatan siswa untuk mencoba langsung (tes ombak) bidang yang mereka minati secara mendalam.</p>
+        </div>
+
+        <div class="memo-card memo-2">
+            <h2>Topik yang Diangkat</h2>
+            <p class="typewriter-text">Refleksi Pengalaman dan Pentingnya Program Internship Curriculum (IC).
+Membahas manfaat magang bagi siswa kelas 9 berdasarkan pengalaman langsung di lapangan.
+</p>
+        </div>
+
+        <div class="memo-card memo-3">
+            <h2>Alasan Memilih Topik</h2>
+            <p class="typewriter-text">Sebagai pemenuhan tugas Ujian Praktik syarat kelulusan.
+Selain karena kewajiban akademis, saya ingin membagikan pengalaman nyata yang saya dapatkan selama 3 hari mengikuti program IC agar bisa menjadi pembelajaran bagi diri sendiri dan orang lain.
+</p>
+        </div>
+
+        <div class="memo-card memo-4">
+            <h2>Pesan dan Harapan</h2>
+            <p class="typewriter-text">Harapannya, siswa bisa lebih berani mengeksplorasi passion mereka dan memiliki mental yang siap bersaing setelah lulus nanti.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Ujian Praktik Terintegrasi | SMPIT Al Haraki | Qeenasyura Hana @2026</p>
+</footer>
+
+</body>
+</html>
